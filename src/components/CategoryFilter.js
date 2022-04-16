@@ -2,8 +2,14 @@ import React from "react";
 
 function CategoryFilter({categories}) {
 
+  function selectedButton(event) {
+    const siblings = [...event.target.parentElement.children];
+    siblings.map(sibling => sibling.className = "");
+    event.target.className = "selected";
+  }
+
   const listOfCategories = categories.map(category => (
-    <button key={category}>{category}</button>
+    <button key={category} onClick={selectedButton}>{category}</button>
   ))
 
   return (
