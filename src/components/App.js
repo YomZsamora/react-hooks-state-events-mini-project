@@ -22,6 +22,16 @@ function App() {
     setFilterCategory(event.target.innerText);
   }
 
+  function onTaskFormSubmit(taskDetail, category) {
+    const formData = {
+      text: taskDetail,
+      category: category
+    }
+    const dataArray = [...tasks, formData];
+    setTasks(dataArray);
+    
+  }
+
   const displayedTasks = tasks.filter(task => {
     if(filterCategory === "All") {
       return true;
@@ -34,7 +44,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} filterSelectedCategoryTasks={filterSelectedCategoryTasks} />
-      <NewTaskForm categories={CATEGORIES} />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit} />
       <TaskList tasks={displayedTasks} deleteTask={deleteTask}  />
     </div>
   );
