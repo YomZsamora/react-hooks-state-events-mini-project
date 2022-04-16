@@ -30,13 +30,11 @@ function App() {
     }
   })
 
-
-
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} filterSelectedCategoryTasks={filterSelectedCategoryTasks} />
-      <NewTaskForm />
+      <NewTaskForm categories={CATEGORIES} />
       <TaskList tasks={displayedTasks} deleteTask={deleteTask}  />
     </div>
   );
