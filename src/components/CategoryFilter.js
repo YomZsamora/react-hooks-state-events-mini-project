@@ -1,11 +1,12 @@
 import React from "react";
 
-function CategoryFilter({categories}) {
+function CategoryFilter({categories, filterSelectedCategoryTasks}) {
 
   function selectedButton(event) {
     const siblings = [...event.target.parentElement.children];
     siblings.map(sibling => sibling.className = "");
     event.target.className = "selected";
+    filterSelectedCategoryTasks(event)
   }
 
   const listOfCategories = categories.map(category => (
